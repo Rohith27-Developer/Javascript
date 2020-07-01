@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Javascript Task</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hero">
+ <div class="form-box">
+ <div class="button-box">
+ <div id="btn"></div>
+ <button type="button" class="toggle-btn" onclick="login()">Login</button>
+  <button type="button" class="toggle-btn" onclick="register()">Register</button>
+ </div>
+<form name="loginform" onSubmit="return validateForm();" id="login" class="input-group" method="post">
+<input type="text" name ="usr"  class="input-field1" id="user" placeholder="Username" required>
+<input type="password" name="pword" class="input-field1" placeholder="Password" required>
+<input type="submit" value="Login" class="submit-btn">
+</form>
+<form name="regform" onSubmit="return valRegForm();" id="register" class="input-group1">
+<input type="text" class="input-field" placeholder="Name" required>
+<input type="email" class="input-field" placeholder="Email id" required>
+<input type="text" class="input-field" placeholder="Date of Birth(dd/mm/yyyy)" required>
+<input type="text" name="user" class="input-field" placeholder="Username" required>
+<input type="password" name="password1" class="input-field" placeholder="Password" required>
+<input type="password" name="confirm" class="input-field" placeholder="Confirm Password" required>
+<input type="submit" value="Register" class="submit-btn1">
+</form>
+</div>
+ </div>
+<script>
+ var x=document.getElementById("login");
+ var y=document.getElementById("register");
+ var z=document.getElementById("btn");
+ function register()
+ {
+  x.style.left="-400px";
+  y.style.left="50px";
+ z.style.left="110px";
+ }
+ function login()
+ {
+  x.style.left="50px";
+  y.style.left="450px";
+ z.style.left="0px";
+ }
+function validateForm() {
+        var un = document.loginform.usr.value;
+        var pw = document.loginform.pword.value;
+        var username = "username"; 
+        var password = "password";
+        if ((un.length >= 6) && (pw.length >= 6) && pw.includes("@")) {
+ 	   alert("Login Successful. Successfully signedin");
+            return true;
+        }
+	else if(un.length<6)
+  	{
+ 	  alert("username should be more than 6 characters");
+	  return false;
+ 	}
+ 	else if(pw.length<6)
+	{
+	  alert("password should be more than 6 characters");
+	  return false;
+	}
+	else if(!pw.includes("@"))
+	{
+	  alert("password should contain @ symbol");
+	  return false;
+	}
+        else {
+            alert ("Login was unsuccessful, please check your username and password");
+            return false;
+        }
+  }
+function valRegForm() {
+        var pw = document.regform.password1.value;
+        var cp = document.regform.confirm.value;
+	var name=document.regform.user.value;
+        if (name.length >=6 && pw == cp && pw.length>=6) {
+ 	   alert("Registration Successful.");
+            return true;
+        }
+	else if(name.length<6)
+	{
+ 	  alert("username should be more than 6 letters");
+	 return false;
+	}
+        else {
+            alert ("Check your credentials.");
+            return false;
+        }
+  }
+</script>
+</body>
+</html>
